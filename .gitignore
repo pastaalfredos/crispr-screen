@@ -1,5 +1,10 @@
-# Ignore the 'data' directory
+# Ignore data and Excel files
 data/
-
-# Ignore all Excel files
 *.xlsx
+
+# Ignore R data, builds, and local settings
+.Rhistory
+.RData
+.Rproj.user/
+.Ruserdata
+.Rbuildignore
