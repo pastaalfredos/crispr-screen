@@ -15,11 +15,13 @@
 
 find_essential_sgrnas <- function(data, lfc_threshold = -1, fdr_threshold = 0.05) {
   essential_sgrnas <- data |>
-    dplyr::select(sgrna = 1, gene = 2, lfc = 5, fdr = 12) |>
+    dplyr::select(seq = 3, gene = 2, lfc = 6, fdr = 13) |>
     dplyr::filter(lfc < lfc_threshold, fdr < fdr_threshold) |>
     dplyr::arrange(fdr)
 
   # View the output
   print(head(essential_sgrnas))
+
+  return(essential_sgrnas)
 }
 

@@ -11,3 +11,18 @@
 #'
 #'
 "dropout_data"
+
+#' Essential sgRNAs Dataset
+#'
+#' A dataset containing information about essential sgRNAs.
+#'
+#' @docType data
+#' @usage data(essential_sgrnas)
+#' @format A tibble with 100 rows and 4 variables:
+#' \describe{
+#'   \item{seq}{Sequence of the sgRNA}
+#'   \item{gene}{Gene targeted by the sgRNA}
+#'   \item{lfc}{Log fold change}
+#'   \item{fdr}{False discovery rate}
+#' }
+"essential_sgrnas"
