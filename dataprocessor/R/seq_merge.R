@@ -38,8 +38,8 @@ merge_data <- function(dropout_data, gecko_a, gecko_b) {
   merged_data <- bind_rows(dropout_a, dropout_b)
   # Reorder the columns and remove duplicates for a cleaner table
   merged_data <- merged_data %>%
-    select(-lib, -gene_id) %>%
-    select(sgrna, Gene, seq, everything())
+    dplyr::select(-lib, -gene_id, -'...17') %>%
+    dplyr::select(sgrna, Gene, seq, everything())
 
 
   return(merged_data)
