@@ -1,6 +1,8 @@
-# Ignore data and Excel files
+# Ignore data files
 data/
 *.xlsx
+*.csv
+dataprocessor/GSE169614/
 
 # Ignore R data, builds, and local settings
 .Rhistory
