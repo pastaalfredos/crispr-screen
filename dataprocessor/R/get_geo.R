@@ -53,5 +53,3 @@ avg_expr_data <- avg_expr_data %>%
 
 # Save the data into the project
 save(avg_expr_data, file = "data/avg_expr_data.rda")
-
-

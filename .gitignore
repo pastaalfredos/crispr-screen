@@ -3,6 +3,7 @@ data/
 *.xlsx
 *.csv
 dataprocessor/GSE169614/
+dataprocessor/images/
 
 # Ignore R data, builds, and local settings
 .Rhistory

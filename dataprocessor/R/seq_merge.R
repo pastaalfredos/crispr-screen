@@ -57,8 +57,5 @@ list2env(data_list, envir = .GlobalEnv)
 # Merge the data sets
 merged_data <- merge_data(dropout_data, gecko_a, gecko_b)
 
-# Find essential sgRNAs
-essential_sgrnas <- find_essential_sgrnas(merged_data)
-
-# Save as CSV
-write.csv(essential_sgrnas, "essential_sgrnas.csv", row.names = FALSE)
+# Save the data into the project
+save(merged_data, file = "data/merged_data.rda")

@@ -1,0 +1,2 @@
+GeCKO library: https://www.addgene.org/pooled-library/zhang-human-gecko-v2/
+sgRNA level data: https://genomebiology.biomedcentral.com/articles/10.1186/s13059-020-1940-8#Sec22
