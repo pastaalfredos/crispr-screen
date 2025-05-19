@@ -11,3 +11,6 @@ dataprocessor/images/
 .Rproj.user/
 .Ruserdata
 .Rbuildignore
+
+# Ignore test scripts for learning
+/dataprocessor/R/*test*

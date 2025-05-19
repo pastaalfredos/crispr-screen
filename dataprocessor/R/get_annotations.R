@@ -24,7 +24,3 @@ annotations_unique <- annotations %>%
 
 # Save the data into the project
 save(annotations_unique, file = "data/annotation_data.rda")
-
-# Match annotation data with the existing data
-data_updated <- merged_data %>%
-  left_join(annotations_unique, by = c("Gene" = "external_gene_name"))
