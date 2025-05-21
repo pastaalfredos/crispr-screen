@@ -11,7 +11,8 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
 Imports: 
     dplyr,
-    readxl
+    readxl,
+    purrr
 Depends: 
     R (>= 3.5)
 LazyData: true

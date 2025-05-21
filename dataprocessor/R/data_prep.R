@@ -1,16 +1,7 @@
 # Load necessary libraries
 library(dplyr)
 library(stringr)
-
-# Function to load data files (if not already loaded)
-load_if_missing <- function(object_name, file_path) {
-  if (!exists(object_name, envir = .GlobalEnv)) {
-    load(file_path, envir = .GlobalEnv)
-    message(paste("Loaded", object_name, "from", file_path))
-  } else {
-    message(paste(object_name, "already exists in environment."))
-  }
-}
+library(purrr)
 
 # Load in all the data (if necessary)
 load_if_missing("avg_expr_data", "data/avg_expr_data.rda")

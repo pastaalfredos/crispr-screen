@@ -21,7 +21,7 @@ read_expression_file <- function(file) {
   # Select gene name and expression
   # Rename the column after the sample name
   expr_data <- read_tsv(file, col_types = cols()) %>%
-    select(geneName, fpkm.mapped) %>%
+    dplyr::select(geneName, fpkm.mapped) %>%
     rename(!!sample_name := fpkm.mapped)
 
   return(expr_data)
@@ -37,7 +37,7 @@ avg_expr_data <- expr_data %>%
   rowwise() %>%
   mutate(mean_fpkm = mean(c_across(-geneName), na.rm = TRUE)) %>%
   ungroup() %>%
-  select(geneName, mean_fpkm)
+  dplyr::select(geneName, mean_fpkm)
 
 # Plot the data to check log distribution
 ggplot(avg_expr_data, aes(x = log1p(mean_fpkm))) +
