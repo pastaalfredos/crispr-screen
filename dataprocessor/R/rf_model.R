@@ -5,6 +5,7 @@ rf_model <- function() {
   library(caret)
   library(xgboost)
   library(Metrics)
+  library(ggplot2)
 
   # Load in data (if necessary)
   load_if_missing("ml_data", "data/ml_data.rda")
@@ -16,6 +17,16 @@ rf_model <- function() {
   input_data <- ml_data %>%
     dplyr::select(LFC, gc_content, log_fpkm, start_position, end_position,
                   strand, dplyr::starts_with("base"))
+
+  # Plot LFC to check distribution
+  ggplot(ml_data, aes(x = LFC)) +
+    geom_histogram(bins = 50, fill = "lightblue", color = "black") +
+    labs(
+      title = "LFC Distribution",
+      x = "LFC",
+      y = "Count"
+    ) +
+    theme_minimal()
 
   # Create training indices
   train_index <- createDataPartition(ml_data$LFC, p = 0.7, list = FALSE)
@@ -36,15 +47,25 @@ rf_model <- function() {
 
   dtrain <- xgb.DMatrix(data = X, label = y)
 
+  # Function for R2
+  rsq <- function(actual, predicted) {
+    ss_res <- sum((actual - predicted)^2)
+    ss_tot <- sum((actual - mean(actual))^2)
+    return(1 - ss_res / ss_tot)
+  }
+
   # Perform parameter tuning
+  # Decrease the max depth to max out at 8 unless
+  # you have high RAM/you hate yourself
   grid <- expand.grid(
-    max_depth = c(4, 6, 8),
+    max_depth = c(8, 10, 12),
     colsample_bynode = c(0.4, 0.6, 0.8),
     subsample = c(0.6, 0.8, 1.0),
-    num_parallel_tree = c(100, 300, 500)
+    num_parallel_tree = c(500)
   )
 
   best_rmse <- Inf
+  best_r2 <- -Inf
   best_model <- NULL
   best_params <- list()
 
@@ -71,16 +92,22 @@ rf_model <- function() {
 
     preds <- predict(model, X_test)
     rmse_val <- rmse(y_test, preds)
+    mae_val <- mae(y_test, preds)
+    r2_val <- rsq(y_test, preds)
 
-    if (rmse_val < best_rmse) {
+    if (r2_val > best_r2) {
+      best_r2 <- r2_val
       best_rmse <- rmse_val
+      best_mae <- mae_val
       best_model <- model
       best_params <- params
     }
   }
 
-  cat("Best RMSE:", best_rmse, "\n")
+  cat("RMSE:", best_rmse, "\n")
   print(best_params)
+  cat("MAE :", round(best_mae, 4), "\n")
+  cat("R²  :", round(best_r2, 4), "\n")
 
   # Make final predictions with best model
   final_preds <- predict(best_model, X_test)
