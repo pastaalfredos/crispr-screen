@@ -8,9 +8,9 @@ rf_model <- function() {
   library(ggplot2)
 
   # Load in data (if necessary)
-  # load_if_missing("ml_data", "data/ml_data.rda")
+  load_if_missing("ml_data", "data/ml_data.rda")
   # SLURM version: load directly
-  load(file='~/ml_data.rda')
+  # load(file='~/ml_data.rda')
 
   # Set seed for reproducibility
   set.seed(123)
@@ -60,10 +60,10 @@ rf_model <- function() {
   # Decrease the max depth to max out at 8 unless
   # you have high RAM/you hate yourself
   grid <- expand.grid(
-    max_depth = c(10, 12, 14)
+    max_depth = c(8),
     colsample_bynode = c(0.4, 0.6, 0.8),
     subsample = c(0.6, 0.8, 1.0),
-    num_parallel_tree = c(500, 1000, 1500)
+    num_parallel_tree = c(500)
   )
 
   best_rmse <- Inf
@@ -132,7 +132,7 @@ rf_model <- function() {
   # Store results into a variable
   results <- list(model = best_model, predicted = preds, expected = y_test,
                   importance = importance, r2 = best_r2, mae = best_mae,
-                  rmse = best_rmse)
+                  rmse = best_rmse, X_train = X)
   saveRDS(results, file = "data/results.rds")
 
 

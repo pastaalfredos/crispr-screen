@@ -1,7 +1,7 @@
 # Packages for machine learning model
 
 # List of required packages
-required_packages <- c("dplyr", "caret", "xgboost", "Metrics", "ggplot2")
+required_packages <- c("dplyr", "caret", "xgboost", "Metrics", "ggplot2", "SHAPforxgboost")
 
 # Identify packages that are not installed
 missing_packages <- required_packages[!(required_packages %in% installed.packages()[,"Package"])]
