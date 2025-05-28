@@ -8,7 +8,9 @@ rf_model <- function() {
   library(ggplot2)
 
   # Load in data (if necessary)
-  load_if_missing("ml_data", "data/ml_data.rda")
+  # load_if_missing("ml_data", "data/ml_data.rda")
+  # SLURM version: load directly
+  load(file='~/ml_data.rda')
 
   # Set seed for reproducibility
   set.seed(123)
@@ -58,10 +60,10 @@ rf_model <- function() {
   # Decrease the max depth to max out at 8 unless
   # you have high RAM/you hate yourself
   grid <- expand.grid(
-    max_depth = c(8, 10, 12),
+    max_depth = c(10, 12, 14)
     colsample_bynode = c(0.4, 0.6, 0.8),
     subsample = c(0.6, 0.8, 1.0),
-    num_parallel_tree = c(500)
+    num_parallel_tree = c(500, 1000, 1500)
   )
 
   best_rmse <- Inf
@@ -121,9 +123,19 @@ rf_model <- function() {
   cat("\nSample of Expected vs. Predicted values:\n")
   print(head(comparison, 10))
 
+  # Calculate model importance
+  importance <- xgb.importance(model = results$model)
+  print(importance)
+  xgb.plot.importance(importance)
+
+
   # Store results into a variable
-  results <- list(model = best_model, predicted = preds, expected = y_test)
+  results <- list(model = best_model, predicted = preds, expected = y_test,
+                  importance = importance, r2 = best_r2, mae = best_mae,
+                  rmse = best_rmse)
   saveRDS(results, file = "data/results.rds")
+
+
 
   return(results)
 
