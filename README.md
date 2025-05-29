@@ -43,3 +43,10 @@ crisper-ko-screening
 Navigate to http://localhost:8787 
 The username is by default set to rstudio.
 
+### Data
+You can download the sgRNA data sets used in the project from the following links:
+```bash
+https://static-content.springer.com/esm/art%3A10.1186%2Fs13059-020-1940-8/MediaObjects/13059_2020_1940_MOESM3_ESM.xlsx
+https://media.addgene.org/cms/filer_public/a4/b8/a4b8d181-c489-4dd7-823a-fe267fd7b277/human_geckov2_library_a_09mar2015.csv
+https://media.addgene.org/cms/filer_public/2d/8b/2d8baa42-f5c8-4b63-9c6c-bd98f333b29e/human_geckov2_library_b_09mar2015.csv
+```
