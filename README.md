@@ -19,7 +19,19 @@ git clone URL
 ```
 
 ### Local installation
-Insert info
+Install the required R packages by running:
+```bash
+Rscript requirements.R
+```
+
+To install the development version:
+```bash
+install.packages("devtools")
+devtools::install_github("pastaalfredos/crispr-screen", subdir = "dataprocessor")
+```
+
+### Example uses
+WIP
 
 ### Docker
 Containerize the R package using Docker. A Dockerfile can be found in the downloaded repository.
