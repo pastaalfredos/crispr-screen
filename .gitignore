@@ -2,6 +2,7 @@
 data/
 *.xlsx
 *.csv
+*.png
 dataprocessor/GSE169614/
 dataprocessor/images/
 
