@@ -54,8 +54,15 @@ model_eval <- function() {
 
   shap_long <- shap.prep(shap_contrib = shap_dt, X_train = results$X_train)
 
+  # Save shap data
+  saveRDS(shap_long, file = "data/shap_long.rds")
+
+  # Load shap data
+  shap_long <- readRDS("data/shap_long.rds")
+
   # Plot summary
-  shap.plot.summary(shap_long)
+  p <- shap.plot.summary(shap_long)
+  ggsave("shap_summary.png", p, width = 12, height = 8)
 
   # Correlation heatmap
   corrplot(corr_matrix, method = "color", tl.cex = 0.6, number.cex = 0.5,
