@@ -1,25 +1,25 @@
-# Ignore data files
+# Data
 data/
-*.xlsx
+*.rds
 *.csv
+*.xlsx
+*.png
+
+# Processed and image folders
 dataprocessor/GSE169614/
 dataprocessor/images/
 
-# Ignore R data, builds, and local settings
+# R artifacts
 .Rhistory
 .RData
 .Rproj.user/
 .Ruserdata
 .Rbuildignore
 
-# Ignore test scripts for learning
-/dataprocessor/R/*test*
+# Learning/test scripts
+dataprocessor/R/*test*
 
-# Ignore the ignore files
+# Docker and Git
+.git
 .gitignore
 .dockerignore
-
-# Ignore git files
-.git/
-.DS_Store
-Thumbs.db
