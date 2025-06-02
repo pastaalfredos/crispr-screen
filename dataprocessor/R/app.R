@@ -25,7 +25,8 @@ ui <- fluidPage(
         tabPanel("Predicted vs Expected",
                  plotOutput("pred_vs_exp_plot")),
         tabPanel("Residual Plot", plotOutput("residual_plot")),
-        tabPanel("Correlation Plot", plotOutput("corr_plot"))
+        tabPanel("Correlation Plot", plotOutput("corr_plot")),
+        tabPanel("Variable Importance Plot", plotOutput("var_plot"))
       )
     )
   )
@@ -34,6 +35,64 @@ ui <- fluidPage(
 # Define server logic ----
 server <- function(input, output) {
 
+  # Predicted vs expected plot
+  output$pred_vs_exp_plot <- renderPlot({
+
+    plot_data <- data.frame(Expected = results$expected,
+                            Predicted = results$predicted)
+
+    ggplot(plot_data, aes(x = Expected, y = Predicted)) +
+      geom_point(alpha = 0.6, color = "black") +
+      geom_abline(intercept = 0, slope = 1, color = "red", linetype = "dashed") +
+      theme_minimal() +
+      labs(
+        title = "Predicted vs. Expected LFC",
+        x = "Expected LFC",
+        y = "Predicted LFC"
+      )
+  })
+
+  # Residual plot
+
+  output$residual_plot <- renderPlot({
+
+    residuals <- results$predicted - results$expected
+    res_data <- data.frame(
+      Predicted = results$predicted,
+      Residuals = residuals)
+
+    ggplot(res_data, aes(x = Predicted, y = Residuals)) +
+      geom_point(alpha = 0.4, color = "steelblue") +
+      geom_hline(yintercept = 0, linetype = "dashed", color = "red") +
+      theme_minimal() +
+      labs(title = "Residuals vs Predicted",
+           x = "Predicted LFC",
+           y = "Residuals")
+  })
+
+  # Correlation plot
+
+  output$corr_plot <- renderPlot({
+    selected_vars <- input$selected_vars
+
+  # Failsafe if too few variables
+    if (length(selected_vars) < 2) {
+      plot.new()
+      title("Please select at least two variables for the correlation plot.")
+      return()
+    }
+
+    X_selected <- results$X_train[, selected_vars, drop = FALSE]
+
+    # Calculate correlation matrix
+    corr_matrix <- cor(X_selected, use = "pairwise.complete.obs")
+
+    # Correlation heatmap
+    corrplot(corr_matrix, method = "color", tl.cex = 0.6, number.cex = 0.5,
+             type = "lower", order = "hclust", diag = FALSE,
+             col = colorRampPalette(c("green", "white", "red"))(200),
+             addCoef.col = "black")
+  })
 }
 
 # Run the app ----
