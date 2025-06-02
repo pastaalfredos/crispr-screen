@@ -1,0 +1,10 @@
+name: crispr-app
+title:
+username: pastaalfredos
+account: pastaalfredos
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 14865486
+bundleId: 10382894
+url: https://pastaalfredos.shinyapps.io/crispr-app/
+version: 1

@@ -6,7 +6,7 @@ library(xgboost)
 
 # Load the data
 print(getwd())
-results <- readRDS("../data/results.rds")
+results <- readRDS("results.rds")
 
 # Define UI ----
 ui <- fluidPage(
