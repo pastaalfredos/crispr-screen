@@ -1,3 +1,3 @@
 GPL LICENSE MOTIVATION
 
-Here Alfred will write a mtoivation why he likes this license
+My motivation for using GPL 3.0 is the advantage of copyleft, which keeps derivative works free and non-profit. This protects derivative work from being turned into proprietary software. Along with this security, the license guarantees users' freedom to run the program for any purpose, study how it works, modify and improve it which is essential for collaboration, acedemia and research. While a less permissive license than for example MIT, I am currently not planning any commercial integration of this project.
