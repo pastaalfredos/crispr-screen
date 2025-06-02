@@ -1,12 +1,13 @@
 # crispr-screen
 Project from course Advanced bioinformatics (5MO127) at Umeå University.  
-The purpose of this project is to analyze and optimize  sgRNA design for CRISPR knockout screening.  
+The purpose of this project is to develop a model to analyze and optimize sgRNA design for CRISPR knockout screening.  
 Authored by Alfred Lindqvist
 
-Software used:
-RStudio 2025.05.0+496
-R 4.4.3
+Software used: 
+RStudio 2025.05.0+496 
+R 4.4.5 
 
+🧬 **RShiny App (last update Jun 2 2025)**: [Visit the website to view the model's progress!](https://pastaalfredos.shinyapps.io/crispr-app/)
 
 ## Installation 
 To install the package from Github:
@@ -30,8 +31,13 @@ install.packages("devtools")
 devtools::install_github("pastaalfredos/crispr-screen", subdir = "dataprocessor")
 ```
 
-### Example uses
-WIP
+### How to use
+The script for the machine learning pipeline is ran through *dataprocessor/R/rf_model.R*. This returns a file *results.rds* that contains various model data. 
+Draw the same plots as shown in the RShiny app by running *dataprocessor/R/model_eval.R*. 
+If you want to modify the data used in the model, you can generate a new file *ml_data.rda* in the script *dataprocessor/R/data_prep.R*.
+
+#### Experimental features
+Alternatively, try running an elastic net model in *dataprocessor/R/net_model.R*. This is currently unoptimized. 
 
 ### Docker
 Containerize the R package using Docker. A Dockerfile can be found in the downloaded repository.

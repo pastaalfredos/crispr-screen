@@ -58,7 +58,7 @@ rf_model <- function() {
 
   # Perform parameter tuning
   # Decrease the max depth to max out at 8 unless
-  # you have high RAM/you hate yourself
+  # you have high computational power/you hate yourself
   grid <- expand.grid(
     max_depth = c(8),
     colsample_bynode = c(0.4, 0.6, 0.8),
