@@ -1,0 +1,3 @@
+GPL LICENSE MOTIVATION
+
+Here Alfred will write a mtoivation why he likes this license
