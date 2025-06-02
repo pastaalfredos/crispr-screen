@@ -1,3 +1,5 @@
+model_slurm_edition <- function() {
+
 # Load libraries
 library(dplyr)
 library(caret)
@@ -8,7 +10,7 @@ library(ggplot2)
 # Load in data (if necessary)
 # load_if_missing("ml_data", "data/ml_data.rda")
 # SLURM version: load directly
-load(file='~/ml_data.rda')
+# load(file='~/ml_data.rda')
 
 # Set seed for reproducibility
 set.seed(123)
@@ -132,3 +134,5 @@ results <- list(model = best_model, predicted = preds, expected = y_test,
                 importance = importance, r2 = best_r2, mae = best_mae,
                 rmse = best_rmse)
 saveRDS(results, file = "~/results.rds")
+
+}

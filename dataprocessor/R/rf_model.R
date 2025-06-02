@@ -123,17 +123,18 @@ rf_model <- function() {
   cat("\nSample of Expected vs. Predicted values:\n")
   print(head(comparison, 10))
 
+
   # Calculate model importance
-  importance <- xgb.importance(model = results$model)
+  importance <- xgb.importance(model = best_model)
   print(importance)
   xgb.plot.importance(importance)
-
 
   # Store results into a variable
   results <- list(model = best_model, predicted = preds, expected = y_test,
                   importance = importance, r2 = best_r2, mae = best_mae,
-                  rmse = best_rmse, X_train = X)
+                  rmse = best_rmse, X_train = X, importance = importance)
   saveRDS(results, file = "data/results.rds")
+
 
 
 

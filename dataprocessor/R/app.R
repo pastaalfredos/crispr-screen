@@ -2,6 +2,7 @@ library(shiny)
 library(bslib)
 library(ggplot2)
 library(corrplot)
+library(xgboost)
 
 # Load the data
 print(getwd())
@@ -12,7 +13,7 @@ ui <- fluidPage(
   titlePanel("CRISPR Screen sgRNA Model Evaluation"),
   sidebarLayout(
     sidebarPanel(
-      sliderInput("top_corr", "Number of Top Correlated Variables:",
+      sliderInput("top_corr", "Number of variables (sorted by importance):",
                   min = 2, max = ncol(results$X_train), value = 10),
       checkboxGroupInput(
         "selected_vars",
@@ -33,7 +34,26 @@ ui <- fluidPage(
 )
 
 # Define server logic ----
-server <- function(input, output) {
+server <- function(input, output, session) {
+
+  # Most important variable calculation for corr plot
+  importance <- xgb.importance(model = results$model)
+
+  top_vars <- reactive({
+    head(importance$Feature, n = input$top_corr)
+    })
+
+
+
+  # Update checkboxGroupInput based on top variables
+  observe({
+    updateCheckboxGroupInput(session,
+                             inputId = "selected_vars",
+                             choices = top_vars(),
+                             selected = top_vars()
+    )
+  })
+
 
   # Predicted vs expected plot
   output$pred_vs_exp_plot <- renderPlot({
@@ -92,6 +112,12 @@ server <- function(input, output) {
              type = "lower", order = "hclust", diag = FALSE,
              col = colorRampPalette(c("green", "white", "red"))(200),
              addCoef.col = "black")
+  })
+
+  # Variable importance plot
+
+  output$var_plot <- renderPlot({
+    xgb.plot.importance(results$importance, top_n = input$top_corr)
   })
 }
 

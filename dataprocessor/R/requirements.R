@@ -2,7 +2,8 @@
 
 # List of required packages
 required_packages <- c("dplyr", "caret", "xgboost", "Metrics", "ggplot2",
-                       "SHAPforxgboost", "shiny", "bslib")
+                       "SHAPforxgboost", "shiny", "bslib", "readxl", "tidyverse",
+                       "glmnet", "RSQLite")
 
 # Identify packages that are not installed
 missing_packages <- required_packages[
