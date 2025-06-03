@@ -25,4 +25,3 @@
 #'   \item{lfc}{Log fold change}
 #'   \item{fdr}{False discovery rate}
 #' }
-"essential_sgrnas"

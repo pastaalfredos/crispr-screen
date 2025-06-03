@@ -1,6 +1,6 @@
 ---
 title: "Welcome to CRISPR sgRNA analysis 🧬"
-output: rmarkdown::html_document
+output: pkgdown::html_document
 ---
 
 ## Overview

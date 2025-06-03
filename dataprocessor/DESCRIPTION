@@ -21,7 +21,8 @@ Imports:
     tidyverse,
     glmnet,
     RSQLite,
-    pkgdown
+    pkgdown,
+    pkgload
 Depends: 
     R (>= 3.5)
 LazyData: true
