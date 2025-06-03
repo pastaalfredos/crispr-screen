@@ -1,8 +1,8 @@
 ---
-title: "Introduction to essential RNA calculation"
+title: "Progress Update: Jun 3 2025"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Introduction to essential RNA calculation}
+  %\VignetteIndexEntry{Progress Update: Jun 3 2025}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

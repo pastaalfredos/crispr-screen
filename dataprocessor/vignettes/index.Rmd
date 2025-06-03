@@ -1,0 +1,26 @@
+---
+title: "Welcome to CRISPR sgRNA analysis 🧬"
+output: rmarkdown::html_document
+---
+
+## Overview
+
+The **`dataprocessor`** package aims to develop tools to analyze sgRNA data and predictive factors for sgRNA quality in CRISPR screens. It includes functions for preprocessing data, building predictive models, and generating visualizations.
+
+## Features
+
+-   Analyze data from sgRNAs and their surrounding genes\
+-   Train machine learning models\
+-   Generate plots to evaluate models
+
+## Installation
+
+Check out the [**GitHub repository**](https://github.com/pastaalfredos/crispr-screen) for detailed installation instructions.
+
+## Progress
+
+Visit the [**Shiny app**](https://pastaalfredos.shinyapps.io/crispr-app/) to explore the current state of the model! (Last updated Jun 2 2025)\
+
+For an interpration of the current model, see the [**progress update page**](articles/progress.html).\
+
+For a more detailed analysis, see the [**report**](articles/report.html).
