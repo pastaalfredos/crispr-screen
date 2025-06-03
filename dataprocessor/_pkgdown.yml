@@ -1,0 +1,36 @@
+home:
+  title: "dataprocessor"
+  tagline: "Analyze sgRNA quality in CRISPR screens"
+
+template:
+  bootstrap: 5
+  includes:
+    after_title: |
+      <a href="https://github.com/pastaalfredos/crispr-screen"
+         aria-label="GitHub repository" class="pkgdown-link">
+         <i class="fab fa-github"></i>
+      </a>
+
+navbar:
+  structure:
+    left:
+      - home
+      - reference
+      - articles
+      - news
+    right:
+      - github
+  components:
+    github:
+      icon: fa-github
+      href: https://github.com/pastaalfredos/crispr-screen
+
+reference:
+  - title: "Main Functions"
+    contents:
+      - load_if_missing
+      - find_essential_sgrnas
+  - title: "Data"
+    contents:
+      - dropout_data
+      - essential_sgrnas
