@@ -33,7 +33,8 @@ devtools::install_github("pastaalfredos/crispr-screen", subdir = "dataprocessor"
 ```
 
 ### How to use
-The script for the machine learning pipeline is ran through *dataprocessor/R/rf_model.R*. This returns a file *results.rds* that contains various model data.  
+The data is gathered and processed through scripts *get_annotations.R*, *get_geo.R*, *seq_merge.R* and *data_prep.R*. For *seq_merge.R*, download the data from the Data section below and place it in *dataprocessor/data*.  
+The script for the machine learning pipeline is run through *dataprocessor/R/rf_model.R*. This returns a file *results.rds* that contains various model data.  
 Draw the same plots as shown in the RShiny app by running *dataprocessor/R/model_eval.R*.  
 If you want to modify the data used in the model, you can generate a new file *ml_data.rda* in the script *dataprocessor/R/data_prep.R*.
 
