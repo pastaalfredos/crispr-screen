@@ -1,6 +1,7 @@
 home:
   title: "dataprocessor"
-  tagline: "Analyze sgRNA quality in CRISPR screens"
+  strip_header: true
+  sidebar: false
 
 template:
   bootstrap: 5
