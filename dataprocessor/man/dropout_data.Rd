@@ -7,9 +7,19 @@
 \format{
 A data frame with 118461 rows and 13 variables:
 \describe{
-\item{sgrna}{sgRNA ID}
-\item{Gene}{Gene name}
-\item{GeCKO library_count}{Library count}
+\item{sgrna}{sgRNA ID as assigned by the HGLib dataset}
+\item{Gene}{The target gene symbol}
+\item{GeCKO library_count}{Read count in the pre-dropout cell population.}
+\item{Dropout_count}{Read count in the post-dropout cell population.}
+\item{LFC}{Log fold change between dropout and library counts}
+\item{control_var}{Control variance estimate}
+\item{ajd_var}{Adjusted variance for each sgRNA}
+\item{score}{Score reflecting sgRNA essentiality or dropout significance.}
+\item{p.low}{Lower-tail p-value for testing dropout significance.}
+\item{p.high}{Upper-tail p-value for testing enrichment}
+\item{p.twosided}{Two-sided p-value combining p.low and p.high}
+\item{FDR}{False discovery rate-adjusted p-value}
+\item{high_in_Dropout}{Logical indicator of significant enrichment}
 }
 }
 \usage{
