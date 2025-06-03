@@ -1,0 +1,15 @@
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>/404.html</loc></url>
+<url><loc>/articles/index.html</loc></url>
+<url><loc>/articles/progress.html</loc></url>
+<url><loc>/articles/report.html</loc></url>
+<url><loc>/authors.html</loc></url>
+<url><loc>/index.html</loc></url>
+<url><loc>/LICENSE-text.html</loc></url>
+<url><loc>/reference/dropout_data.html</loc></url>
+<url><loc>/reference/essential_sgrnas.html</loc></url>
+<url><loc>/reference/find_essential_sgrnas.html</loc></url>
+<url><loc>/reference/index.html</loc></url>
+<url><loc>/reference/load_if_missing.html</loc></url>
+</urlset>
+
