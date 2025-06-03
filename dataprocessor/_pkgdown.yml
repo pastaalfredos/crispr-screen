@@ -1,12 +1,7 @@
 home:
   title: "dataprocessor"
-  contents: "index.Rmd"
-  strip_header: true
-  sidebar: false
 
 template:
-  params:
-    description: ""
   bootstrap: 5
   includes:
     after_title: |
