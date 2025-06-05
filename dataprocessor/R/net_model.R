@@ -42,12 +42,20 @@ net_model <- function() {
   best_lambda <- NA
   final_preds <- NULL
 
+  # Function for R2
+  rsq <- function(actual, predicted) {
+    ss_res <- sum((actual - predicted)^2)
+    ss_tot <- sum((actual - mean(actual))^2)
+    return(1 - ss_res / ss_tot)
+  }
+
   # Parameter tuning of alpha
   for (a in alphas) {
     cv_model <- cv.glmnet(x = X, y = y, alpha = a, nfolds = 5,
                           type.measure = "mse", family = "gaussian")
     preds <- predict(cv_model, newx = X_test, s = "lambda.min")
     rmse_val <- rmse(y_test, preds)
+    r2 <- rsq(y_test, preds)
 
     # Store the best model's stats
     if (rmse_val < best_rmse) {
@@ -55,6 +63,7 @@ net_model <- function() {
       best_model <- cv_model
       best_alpha <- a
       best_lambda <- cv_model$lambda.min
+      best_r2 <- r2
       final_preds <- preds
     }
   }
@@ -62,6 +71,7 @@ net_model <- function() {
   cat("Best RMSE:", best_rmse, "\n")
   cat("Best alpha:", best_alpha, "\n")
   cat("Best lambda:", best_lambda, "\n")
+  cat("Best R2:", best_r2, "\n")
 
   # Print a comparison of actual vs. predicted values (first few rows)
   comparison <- data.frame(
@@ -73,7 +83,9 @@ net_model <- function() {
   print(head(comparison, 10))
 
   # Store results into a variable
-  results <- list(model = best_model, predicted = final_preds, expected = y_test, alpha = best_alpha, lambda = best_lambda)
+  results <- list(model = best_model, predicted = final_preds,
+                  xpected = y_test, alpha = best_alpha,
+                  lambda = best_lambda, r2= best_r2, rmse = best_rmse)
   saveRDS(results, file = "data/net_results.rds")
 
   return(results)
