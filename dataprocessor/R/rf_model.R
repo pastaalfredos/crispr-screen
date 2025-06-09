@@ -132,7 +132,7 @@ rf_model <- function() {
   # Store results into a variable
   results <- list(model = best_model, predicted = preds, expected = y_test,
                   importance = importance, r2 = best_r2, mae = best_mae,
-                  rmse = best_rmse, X_train = X, importance = importance)
+                  rmse = best_rmse, X_train = X)
   saveRDS(results, file = "data/results.rds")
 
 
