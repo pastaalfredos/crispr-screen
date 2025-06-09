@@ -22,7 +22,8 @@ Imports:
     glmnet,
     RSQLite,
     pkgdown,
-    pkgload
+    pkgload,
+    rmarkdown
 Depends: 
     R (>= 3.5)
 LazyData: true

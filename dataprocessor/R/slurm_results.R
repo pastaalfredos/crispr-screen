@@ -1,3 +1,5 @@
+slurm_results <- function() {
+
 library(DBI)
 library(RSQLite)
 
@@ -45,3 +47,5 @@ dbClearResult(stmt)
 # Retrieve model
 raw_model <- dbGetQuery(conn, "SELECT model_blob FROM model_store")$model_blob[[1]]
 loaded_model <- unserialize(raw_model)
+
+}

@@ -5,6 +5,8 @@ model_eval <- function() {
 
   # Load in the results from trained model
   results <- readRDS("data/results.rds")
+
+  # Predicted vs expected plot
   preds <- results$predicted
   expected <- results$expected
 

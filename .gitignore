@@ -1,8 +1,12 @@
 # Ignore data files
-data/
 *.xlsx
 *.csv
 *.png
+*.rda
+*.rds
+*.sqlite
+*.gz
+
 dataprocessor/GSE169614/
 dataprocessor/images/
 
