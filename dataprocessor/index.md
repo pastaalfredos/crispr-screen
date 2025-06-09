@@ -19,5 +19,3 @@ Check out the [**GitHub repository**](https://github.com/pastaalfredos/crispr-sc
 Visit the [**Shiny app**](https://pastaalfredos.shinyapps.io/crispr-app/) to explore the current state of the model! (Last updated Jun 2 2025)\
 
 For an interpretation of the current model, see the [**progress update page**](articles/progress.html).\
-
-For a more detailed analysis, see the [**report**](articles/report.html).

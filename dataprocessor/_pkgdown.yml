@@ -28,8 +28,9 @@ reference:
   - title: "Main Functions"
     contents:
       - load_if_missing
-      - find_essential_sgrnas
   - title: "Data"
     contents:
       - dropout_data
-      - essential_sgrnas
+      - annotations_unique
+      - avg_expr_data
+      - ml_data

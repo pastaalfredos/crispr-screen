@@ -1,8 +1,8 @@
 ---
-title: "Progress Update: Jun 3 2025"
+title: "Progress Summary"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Progress Update: Jun 3 2025}
+  %\VignetteIndexEntry{Progress Summary}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -14,6 +14,10 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r setup}
-library(dataprocessor)
-```
+### Progress Summary (Jun 9, 2025)
+
+Through the tested models, random forest and elastic net, the highest achieved $R^2$ was 0.137 with an RMSE of 1.09. This combined with the expected vs predicted plot shown in the [**Shiny app**](https://pastaalfredos.shinyapps.io/crispr-app/) indicate a poor model where LFC only slightly correlates with the chosen explanatory variables.
+
+The most important variables identified by variable importance were FPKM (Fragments Per Kilobase of transcript per Million mapped reads) from the RNA-seq data, GC content, position in genome. Out of the base positions, a T in position 19 (base_76) was considered the most important. FPKM's importance may have been inflated by the inclusion of non-coding RNAs in the data set, but it may be important nonetheless. High expression can also correlate with there being more target material for CRISPR, which may explain the connection to dropout effectiveness.
+
+While updates to the model are not currently planned, ideas for future work on the model include spending more time working on the data sets to figure out what may be causing the most noise and investigating more into the importance of different base positions of an sgRNA.
